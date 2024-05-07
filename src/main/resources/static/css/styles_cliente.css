@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana */
+    
+}
+
+.menu {
+    flex: 0 0 250px; /* Ancho fijo del menú */
+    background-color: #292929; /* Color de fondo del menú */
+    color: #fff; /* Color del texto del menú */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.menu h2 {
+    padding: 20px;
+    margin: 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    padding: 10px 20px;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.menu ul li a:hover {
+    background-color: #444;
+}
+
+.perfil {
+    position: relative;
+    flex-grow: 1; /* El contenido del perfil ocupará todo el espacio restante */
+    padding: 20px;
+}
+
+.perfil h1 {
+    margin-top: 0;
+}
+
+
+
+
+.logout-button {
+    position: relative;
+    
+    display: inline-block;
+    z-index: 999;
+    margin-left: 40px;
+   
+}
+.logout-button img{
+    width: 20px;
+    height: auto;
+}
+
+.logout-button:hover img {
+    filter: brightness(0.8);
+}
+.logo img {
+    
+    display: block;
+    margin: 0 auto;
+    width: 150px; /* Ajusta el ancho según tu necesidad */
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+
+.social-icons {
+    
+    margin-left: auto;
+}
+
+.social-icons a {
+    margin-left: 10px; /* Espaciado entre los iconos */
+}
+
+.social-icons img {
+    width: 20px; /* Tamaño de los iconos */
+    height: auto; /* Altura automática */
+}
+
+.top-bar {
+    background-color: #292929; /* Color de fondo de la barra */
+    height: 20px;
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    display: flex; /* Mostrar elementos en línea */
+    justify-content: space-between;
+    align-items: center; /* Alinear elementos verticalmente al centro */
+}
+
+

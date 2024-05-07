@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido a la Página de Inicio</h1>
+    <button onclick="obtenerClasesDisponibles()">Cargar Clases Disponibles</button>
+    <div id="clasesDisponibles"></div>
+
+    <script>
+        function obtenerClasesDisponibles() {
+            fetch('/reservas/clases/disponibles')
+                .then(response => response.json())
+                .then(data => {
+                    mostrarClases(data);
+                })
+                .catch(error => console.error('Error al obtener las clases:', error));
+        }
+
+        function mostrarClases(clases) {
+            const clasesDisponiblesDiv = document.getElementById('clasesDisponibles');
+            clasesDisponiblesDiv.innerHTML = '';
+
+            if (clases.length === 0) {
+                clasesDisponiblesDiv.textContent = 'No hay clases disponibles.';
+            } else {
+                const listaClases = document.createElement('ul');
+                clases.forEach(clase => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `ID: ${clase.idClases}, Día: ${clase.dia}, Hora: ${clase.hora}`;
+                    
+                    // Crear botón de reserva
+                    const reservarButton = document.createElement('button');
+                    reservarButton.textContent = 'Reservar';
+                    reservarButton.addEventListener('click', function(){
+                        reservarClase(clase.idClases);
+                    });
+                    
+                    // Agregar el botón al elemento de la lista
+                    listItem.appendChild(reservarButton);
+                    
+                    // Agregar el elemento de la lista a la lista de clases
+                    listaClases.appendChild(listItem);
+                });
+                clasesDisponiblesDiv.appendChild(listaClases);
+            }
+        }
+
+        function reservarClase(claseId) {
+            fetch(`/reservas/crear?claseId=`+ claseId, { method: 'POST' })
+                .then(response => response.text())
+                .then(message => {
+                    alert(message);
+                    obtenerClasesDisponibles(); // Recargar las clases después de hacer la reserva
+                })
+                .catch(error => console.error('Error al reservar la clase:', error));
+        }
+    </script>
+</body>
+</html>
+
+
