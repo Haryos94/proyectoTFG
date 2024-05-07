@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.proyectoTFG.proyecto.models.ClasesModel;
 import com.proyectoTFG.proyecto.models.DiaSemanaModel;
 import com.proyectoTFG.proyecto.repositories.ClasesRepository;
+import com.proyectoTFG.proyecto.repositories.DiaSemanaRepository;
 
 @Service
 public class ClasesService {
@@ -21,9 +22,12 @@ public class ClasesService {
     @Autowired
     DiaSemanaService diaSemanaService;
 
+    @Autowired
+    DiaSemanaRepository diaSemanaRepository;
+
     public List<ClasesModel> findAll(){
         
-        return clasesRepository.findAllWithTipoClase();
+        return clasesRepository.findAll();
     }
 
     public Optional<ClasesModel> findById(Long id) {
@@ -38,8 +42,21 @@ public class ClasesService {
         clasesRepository.deleteById(id);
     }
 
-    public void calendarioClases(){
-        
+    public void generarClases(){
+
+        List<DiaSemanaModel> diaSemanaModels = diaSemanaRepository.findAll();
+
+        for (DiaSemanaModel diaSemanaModel : diaSemanaModels) {
+
+            ClasesModel clasesModel = new ClasesModel();
+
+            clasesModel.setDia(diaSemanaModel.getDia());
+            clasesModel.setHora(diaSemanaModel.getHora());
+            clasesModel.setTipoClase(diaSemanaModel.getTipoClaseModel());
+
+            clasesRepository.save(clasesModel);
+            
+        }
         
     }
 }

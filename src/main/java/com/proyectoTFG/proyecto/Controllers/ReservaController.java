@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+import com.proyectoTFG.proyecto.services.ClasesService;
 import com.proyectoTFG.proyecto.services.ReservasService;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +24,9 @@ public class ReservaController {
 
     @Autowired
     private ReservasService reservasService;
+
+    @Autowired
+    private ClasesService clasesService;
 
     
 
@@ -46,6 +48,13 @@ public class ReservaController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear la reserva");
         }
+    }
+
+    @PostMapping("/calendario")
+    public String calendario(){
+        
+        clasesService.generarClases();
+        return "Se han generado las clases";
     }
 
     
