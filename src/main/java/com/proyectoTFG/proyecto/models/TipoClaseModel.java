@@ -19,7 +19,7 @@ public class TipoClaseModel {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="profesores_id")
     private ProfesoresModel profesoresModel;
 
@@ -53,6 +53,12 @@ public class TipoClaseModel {
 
     public void setProfesoresModel(ProfesoresModel profesoresModel) {
         this.profesoresModel = profesoresModel;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoClaseModel [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", profesoresModel="
+                + profesoresModel + "]";
     }
 
     

@@ -13,6 +13,8 @@ public class AdminModel extends PersonasModel {
     private UsuariosModel usuario;
 
     
+
+    
     public AdminModel(Long id, String nombre, String apellidos, String email, String fecha_nacimiento,
             UsuariosModel usuario) {
         super(id, nombre, apellidos, email, fecha_nacimiento);
@@ -33,6 +35,9 @@ public class AdminModel extends PersonasModel {
     public void setUsuario(UsuariosModel usuario) {
         this.usuario = usuario;
     }
+
+
+    
 
     
     

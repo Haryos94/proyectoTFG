@@ -1,6 +1,7 @@
 package com.proyectoTFG.proyecto.services;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,21 +43,28 @@ public class ClasesService {
         clasesRepository.deleteById(id);
     }
 
-    public void generarClases(){
+    public void deleteAll(){
+        clasesRepository.deleteAll();
+    }
+    
 
-        List<DiaSemanaModel> diaSemanaModels = diaSemanaRepository.findAll();
+    public void crearClases(Long calendarioExistenteId){
 
-        for (DiaSemanaModel diaSemanaModel : diaSemanaModels) {
+        List<DiaSemanaModel> diasExistentes = diaSemanaRepository.findByCalendarioModel_Id(calendarioExistenteId);
 
-            ClasesModel clasesModel = new ClasesModel();
+        
 
-            clasesModel.setDia(diaSemanaModel.getDia());
-            clasesModel.setHora(diaSemanaModel.getHora());
-            clasesModel.setTipoClase(diaSemanaModel.getTipoClaseModel());
+        for (DiaSemanaModel dia : diasExistentes) {
 
-            clasesRepository.save(clasesModel);
+            ClasesModel nuevaClase = new ClasesModel();
+            nuevaClase.setDia(dia.getDia());
+            nuevaClase.setHora(dia.getHora());
+            nuevaClase.setTipoClase(dia.getTipoClaseModel());
+            
+
+            clasesRepository.save(nuevaClase);
             
         }
-        
     }
+    
 }

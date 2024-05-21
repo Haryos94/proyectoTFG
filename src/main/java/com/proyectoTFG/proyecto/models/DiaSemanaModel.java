@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class DiaSemanaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="iddia_semana")
     private Long id;
 
     @Column(name = "dia")
@@ -15,7 +16,7 @@ public class DiaSemanaModel {
     @Column(name="hora")
     private String hora;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tipo_clase_id")
     private TipoClaseModel tipoClaseModel;
 

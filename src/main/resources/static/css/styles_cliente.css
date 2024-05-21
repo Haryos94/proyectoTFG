@@ -47,11 +47,69 @@ body {
     position: relative;
     flex-grow: 1; /* El contenido del perfil ocupará todo el espacio restante */
     padding: 20px;
+    font-size: 12px;
 }
+/* Estilos para la sección de historia del boxeo */
+.historia-boxeo {
+    margin: 20px;
+  }
+  
+  .historia-boxeo h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .historia-boxeo p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  /* Estilos para las biografías de boxeadores */
+  .boxeadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .boxeador {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .boxeador img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .boxeador h3 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .boxeador p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666;
+  }
+  
+  /* Estilos para la historia de tu club de boxeo */
+  .historia-boxeo .club-boxeo {
+    margin-top: 40px;
+  }
+  
+  /* Estilos para anécdotas y curiosidades */
+  .historia-boxeo .anecdotas-curiosidades {
+    margin-top: 40px;
+  }
+  
 
-.perfil h1 {
-    margin-top: 0;
-}
+
 
 
 

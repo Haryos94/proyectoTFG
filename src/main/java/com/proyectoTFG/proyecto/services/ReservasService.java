@@ -1,6 +1,7 @@
 package com.proyectoTFG.proyecto.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,21 @@ public class ReservasService {
     
     // Guardar la reserva en la base de datos
     reservasRepository.save(reserva);
+}
+
+// Método para listar las reservas de un usuario
+public List<ReservasModel> listarReservasPorUsuario(Long usuarioId) {
+    return reservasRepository.findByUsuarioId(usuarioId);
+}
+
+// Método para borrar una reserva
+public void borrarReserva(Long id, Long usuarioId) {
+    // Verificar si la reserva pertenece al usuario antes de borrarla
+    ReservasModel reserva = reservasRepository.findByIdAndUsuarioId(id, usuarioId);
+    if (reserva == null) {
+        throw new IllegalArgumentException("La reserva no pertenece al usuario especificado.");
+    }
+    reservasRepository.deleteById(id);
 }
 
 }

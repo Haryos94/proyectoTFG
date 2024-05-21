@@ -13,21 +13,17 @@ import com.proyectoTFG.proyecto.repositories.TipoClaseRepository;
 @Service
 public class TipoClaseService {
     
+    
+    private final TipoClaseRepository tipoClaseRepository;
+
     @Autowired
-    TipoClaseRepository tipoClaseRepository;
+    public TipoClaseService(TipoClaseRepository tipoClaseRepository) {
+        this.tipoClaseRepository = tipoClaseRepository;
+    }
 
     public List<TipoClaseModel> findAll(){
         return tipoClaseRepository.findAll();
     }
 
-    public List<String> listarCampos() {
-        List<String> campos = new ArrayList<>();
-        Field[] fields = TipoClaseModel.class.getDeclaredFields();
-        
-        for (Field field : fields) {
-            campos.add(field.getName());
-        }
-        
-        return campos;
-    }
+
 }

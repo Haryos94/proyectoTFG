@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+section {
+    margin: 0 20px;
+}
+
+.formulario {
+    width: 50%;
+    max-width: 400px;
+}
+
+.formulario h2 {
+    color: #333;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario textarea {
+    resize: vertical;
+}
+
+.formulario button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #555;
+}
+
+.info-contacto {
+    width: 50%;
+    max-width: 400px;
+}
+
+.info-contacto h2 {
+    color: #333;
+}
+
+.info-contacto p {
+    margin-bottom: 10px;
+}
+
+/* Estilos adicionales para el mapa de Google Maps (si se implementa en el futuro) */
+#mapa {
+    width: 100%;
+    height: 300px; /* Ajustar la altura según sea necesario */
+    margin-top: 20px;
+}
