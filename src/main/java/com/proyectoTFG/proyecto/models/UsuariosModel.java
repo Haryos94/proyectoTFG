@@ -22,6 +22,10 @@ public class UsuariosModel {
    @Column(name="password")
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name="rol_id")
+    private RolesModel rolesModel;
+
   
 
     public Long getId() {
@@ -59,6 +63,14 @@ public class UsuariosModel {
     }
 
     public UsuariosModel() {
+    }
+
+    public RolesModel getRolesModel() {
+        return rolesModel;
+    }
+
+    public void setRolesModel(RolesModel rolesModel) {
+        this.rolesModel = rolesModel;
     }
 
     

@@ -27,7 +27,7 @@ function cargarTiposClase() {
       .catch(error => console.error(error));
 }
 
-// Cargar tipos de clase al cargar la página
+
 window.onload = cargarTiposClase;
 
 

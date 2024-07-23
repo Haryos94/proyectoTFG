@@ -42,19 +42,19 @@ public class UsuariosService {
 
 
     public Long getClienteIdByUsernameAndPassword(String username, String password) {
-        // Buscar usuario por nombre de usuario y contraseña
+       
         UsuariosModel usuario = usuariosRepository.findByUsernameAndPassword(username, password);
         
         if (usuario != null) {
-            // Si el usuario se encuentra, obtener el cliente asociado
+            
             ClientesModel cliente = clientesRepository.findByUsuario(usuario);
             if (cliente != null) {
-                // Devolver el ID del cliente
+                
                 return cliente.getId();
             }
         }
         
-        // Si no se encuentra el usuario o no tiene cliente asociado, devuelve null
+        
         return null;
     }
 
@@ -63,8 +63,15 @@ public class UsuariosService {
         if (usuario != null) {
             return usuario.getId();
         }
-        return null; // Opcionalmente, puedes lanzar una excepción si el usuario no se encuentra
+        return null; 
     }
+
+    public String getRoleNameByUsername(String username) {
+        
+        UsuariosModel usuario = usuariosRepository.findByUsername(username);
+        return usuario.getRolesModel().getNombre();
+    }
+    
 
     
 

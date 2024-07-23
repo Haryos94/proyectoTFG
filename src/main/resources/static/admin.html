@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="css/styles_cliente.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/boxeomanodepiedra"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/cbmanodepiedra"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="https://www.instagram.com/manodepiedracentrodeportivo/"><img src="img/twitter.png" alt="Twitter"></a>
+        </div>
+        <a href="index.html" class="logout-button"><img src="img/cerrar-sesion.png" alt="Cerrar sesión"></a>
+    </div>
+
+    <div class="container">
+        
+        <div class="menu">
+            <div class="logo">
+                <img src="img/logo-mano-piedra.webp" alt="Logo">
+            </div>
+
+            <div class="perfil">
+                <div id="admin-info">
+                   
+                </div>
+            </div>
+
+            <h2>Menú de Administrador</h2>
+            <ul>
+                <li><a href="#" onclick="listAllUsers()">Gestionar Usuarios</a></li>
+                
+                
+            </ul>
+        </div>
+
+        <div class="admin-content">
+            <h2>Bienvenido al Panel de Administrador</h2>
+            <div id="user-list"></div>
+        </div>
+        <div class="vertical-bar"></div>
+        <div id="edit-form" style="display: none;">
+            
+            <form id="edit-user-form">
+                <h3>Editar Usuario</h3>
+                <label for="edit-username">Nombre de Usuario:</label>
+                <input type="text" id="edit-username" name="username"></br>
+                <label for="edit-password">Contraseña:</label>
+                <input type="password" id="edit-password" name="password"></br>
+                <input type="submit" value="Guardar">
+                <button type="button" onclick="cancelEdit()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script_admin.js"></script>
+</body>
+</html>
+

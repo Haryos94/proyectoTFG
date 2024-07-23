@@ -165,4 +165,22 @@ body {
     align-items: center; /* Alinear elementos verticalmente al centro */
 }
 
+.vertical-bar {
+  width: 2px;
+  background-color: black;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#edit-user-form {
+  width: calc(50% - 1px);
+  float: right; /* Alinear a la derecha */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+
 

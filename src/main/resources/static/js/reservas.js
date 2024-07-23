@@ -36,7 +36,7 @@ function borrarReserva(id) {
     .then(response => {
         if (response.ok) {
             console.log(`Reserva ${id} eliminada exitosamente.`);
-            cargarReservas(); // Actualizar la lista de reservas
+            cargarReservas();
         } else {
             throw new Error(`Error al borrar la reserva ${id}`);
         }

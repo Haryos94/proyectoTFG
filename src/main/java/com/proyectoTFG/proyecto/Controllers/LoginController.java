@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectoTFG.proyecto.Controllers.Request.ClienteRegistroRequest;
-
+import com.proyectoTFG.proyecto.services.AdminService;
 import com.proyectoTFG.proyecto.services.RegistroService;
 import com.proyectoTFG.proyecto.services.UsuariosService;
 
@@ -33,11 +33,14 @@ public class LoginController {
     @Autowired
     private UsuariosService usuariosService;
 
+    @Autowired
+    private AdminService adminService;
+
     
 
     @GetMapping("/login")
         public String showLoginForm() {
-            return "login"; // Devuelve el nombre de la vista del formulario de inicio de sesión
+            return "login"; 
         }
 
 
@@ -60,22 +63,44 @@ public class LoginController {
     
     
 
+    
+
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials,HttpSession session) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials, HttpSession session) {
         String username = credentials.get("username");
         String password = credentials.get("password");
-        
+
         Long clienteId = usuariosService.getClienteIdByUsernameAndPassword(username, password);
-        
+        Long adminId = adminService.getAdminIdByUsernameAndPassword(username, password);
+
         if (clienteId != null) {
             session.setAttribute("clienteId", clienteId);
-            Long usuarioId = usuariosService.getUsuarioIdByUsernameAndPassword(username, password); // Por ejemplo
+            Long usuarioId = usuariosService.getUsuarioIdByUsernameAndPassword(username, password);
             session.setAttribute("usuarioId", usuarioId);
+
+            // Obtener el nombre del rol del usuario
+            String roleName = usuariosService.getRoleNameByUsername(username);
+            session.setAttribute("role", roleName);
+
             return ResponseEntity.ok(Collections.singletonMap("redirectUrl", "/cliente.html"));
+
+        } else if (adminId != null) {
+            session.setAttribute("adminId", adminId);
+            Long adminUsuarioId = adminService.getAdminIdByUsernameAndPassword(username, password);
+            session.setAttribute("usuarioId", adminUsuarioId);
+
+            // Obtener el nombre del rol del admin
+            String roleName = adminService.getRoleNameByUsername(username);
+            session.setAttribute("role", roleName);
+
+            return ResponseEntity.ok(Collections.singletonMap("redirectUrl", "/admin.html"));
+
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message", "Credenciales inválidas."));
         }
     }
+
+
     
 }
 

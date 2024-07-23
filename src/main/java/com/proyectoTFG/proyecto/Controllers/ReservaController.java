@@ -44,7 +44,7 @@ public class ReservaController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Debe iniciar sesión para hacer una reserva");
         }
 
-        // Intentar crear la reserva utilizando el servicio
+        
         try {
             reservasService.crearReserva(clienteId, claseId, usuarioId);
             return ResponseEntity.ok("Reserva creada correctamente");
@@ -55,7 +55,7 @@ public class ReservaController {
         }
     }
 
-    // Método para listar las reservas de un usuario
+    
     @GetMapping("/listar")
     public ResponseEntity<List<ReservasModel>> listarReservasUsuario(HttpSession session) {
         Long usuarioId = (Long) session.getAttribute("usuarioId");
@@ -68,7 +68,7 @@ public class ReservaController {
         return ResponseEntity.ok(reservas);
     }
 
-    // Método para borrar una reserva
+    
     @DeleteMapping("/borrar/{id}")
     public ResponseEntity<Void> borrarReserva(@PathVariable Long id, HttpSession session) {
         Long usuarioId = (Long) session.getAttribute("usuarioId");

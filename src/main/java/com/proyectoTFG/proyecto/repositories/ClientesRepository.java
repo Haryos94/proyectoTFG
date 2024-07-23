@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.proyectoTFG.proyecto.models.ClientesModel;
 import com.proyectoTFG.proyecto.models.UsuariosModel;
 
+import jakarta.transaction.Transactional;
+
 
 
 
@@ -13,4 +15,7 @@ import com.proyectoTFG.proyecto.models.UsuariosModel;
 public interface ClientesRepository extends JpaRepository<ClientesModel,Long> {
     
     ClientesModel findByUsuario(UsuariosModel usuario);
+
+    @Transactional
+    void deleteByUsuarioId(Long id);
 }
