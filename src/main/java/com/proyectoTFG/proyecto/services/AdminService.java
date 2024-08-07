@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyectoTFG.proyecto.models.AdminModel;
-import com.proyectoTFG.proyecto.models.ClientesModel;
-import com.proyectoTFG.proyecto.models.ProfesoresModel;
 import com.proyectoTFG.proyecto.models.UsuariosModel;
 import com.proyectoTFG.proyecto.repositories.AdminRepository;
 import com.proyectoTFG.proyecto.repositories.ClientesRepository;

@@ -28,6 +28,9 @@ public class ReservasModel {
     @Column(name = "fecha_reserva")
     private Date fechaReserva;
 
+    @Transient
+    private boolean reservado;
+
     public ReservasModel(Long id, ClientesModel cliente, ClasesModel clase, Date fechaReserva) {
         this.id = id;
         this.cliente = cliente;
@@ -76,6 +79,14 @@ public class ReservasModel {
 
     public void setUsuario(UsuariosModel usuario) {
         this.usuario = usuario;
+    }
+
+    public boolean isReservado() {
+        return reservado;
+    }
+
+    public void setReservado(boolean reservado) {
+        this.reservado = reservado;
     }
 
    

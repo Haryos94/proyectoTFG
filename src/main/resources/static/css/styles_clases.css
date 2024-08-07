@@ -1,28 +1,57 @@
+:root {
+    --primary-bg-color: #2c2c2c;
+    --secondary-bg-color: #3a3a3a;
+    --hover-bg-color: #505050;
+    --header-bg-color: #0fc141;
+    --first-column-bg-color: #f00f13;
+    --border-color: #555555;
+    --text-color: #f0f0f0;
+    --header-text-color: #ffffff;
+    --subheader-text-color: #dcdcdc;
+    --footer-bg-color: #333;
+    --footer-text-color: #f0f0f0;
+    --button-bg-color: #f44336;
+    --button-hover-color: #d32f2f;
+    --active-bg-color: #0fc141;
+}
 
 body {
-    background-color: #2c2c2c; 
-    color: #f0f0f0;
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--primary-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header, footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
 
 h1 {
     font-size: 2.5em;
-    color: #ffffff;
-    text-align: center;
+    color: var(--header-text-color);
     margin-bottom: 10px;
 }
 
-
 h2 {
     font-size: 1.5em;
-    color: #dcdcdc;
-    text-align: center;
+    color: var(--subheader-text-color);
     margin-bottom: 20px;
 }
-
 
 table {
     width: 100%;
@@ -30,52 +59,47 @@ table {
     margin-top: 20px;
 }
 
-
-
-
-
-tbody td {
-    background-color: #3a3a3a;
-    color: #f0f0f0;
+th, td {
+    border: 1px solid var(--border-color);
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #555555;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-
-tbody td:hover {
-    background-color: #505050;
-    cursor: pointer;
-}
-
-
-
-
-td, th {
-    border: 3px solid black;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-}
-
-
-td:hover {
-    background-color: rgb(242, 22, 22);
-}
-
-
-td:active, th:active {
-    background-color: #0fc141; 
+thead th {
+    background-color: var(--header-bg-color);
     color: white;
 }
 
+tbody td {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+tbody td:hover {
+    background-color: var(--hover-bg-color);
+}
 
 td:first-child {
-    background-color: #f00f13; 
+    background-color: var(--first-column-bg-color);
+}
+
+td:active, th:active {
+    background-color: var(--active-bg-color);
+    color: white;
+}
+td.reservado {
+    background-color: var(--button-bg-color);
+    color: white;
+    cursor: not-allowed;
 }
 
 
-th:first-child{
-    background-color: #0fc141;
+footer {
+    margin-top: 20px;
+    padding: 10px;
 }
+
+
+

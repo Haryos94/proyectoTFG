@@ -2,11 +2,8 @@ package com.proyectoTFG.proyecto.services;
 
 
 
-import java.util.Collections;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.proyectoTFG.proyecto.models.ClientesModel;
 import com.proyectoTFG.proyecto.models.RolesModel;
 import com.proyectoTFG.proyecto.models.UsuariosModel;
