@@ -1,11 +1,17 @@
 async function cargarClases() {
     try {
-        const response = await fetch('http://localhost:8080/listar');
-        if (!response.ok) {
-            throw new Error(`Error al cargar las clases: ${response.statusText}`);
+        
+        const responseClases = await fetch('http://localhost:8080/listar');
+        if (!responseClases.ok) {
+            throw new Error(`Error al cargar las clases: ${responseClases.statusText}`);
         }
-        const data = await response.json();
-        renderizarTablaClases(data);
+        const clases = await responseClases.json();
+
+      
+        const reservas = await cargarReservas(); 
+
+        
+        renderizarTablaClases(clases, reservas);
     } catch (error) {
         console.error(error);
     }
@@ -24,7 +30,7 @@ async function cargarReservas() {
     }
 }
 
-function renderizarTablaClases(data) {
+function renderizarTablaClases(clases, reservas) {
     const tablaClases = document.getElementById('tabla-clases');
     const thead = tablaClases.querySelector('thead');
     const tbody = tablaClases.querySelector('tbody');
@@ -49,10 +55,12 @@ function renderizarTablaClases(data) {
         const fila = document.createElement('tr');
         fila.appendChild(crearCelda('td', hora));
         diasSemana.forEach(dia => {
-            const clase = data.find(clase => clase.dia === dia && clase.hora === hora);
+            const clase = clases.find(c => c.dia === dia && c.hora === hora);
             const celda = crearCelda('td', clase ? clase.tipoClase.nombre : '');
             if (clase) {
-                if (clase.reservada) {
+                const estaReservada = reservas.some(reserva => reserva.clase.idClases === clase.idClases);
+                
+                if (estaReservada) {
                     celda.classList.add('reservado');
                     celda.textContent += ' (Reservada)'; 
                 } else {
@@ -102,8 +110,6 @@ async function reservar(idClases, celda) {
 
 window.onload = async () => {
     await cargarClases();
-    const reservas = await cargarReservas();
-    
 };
 
 

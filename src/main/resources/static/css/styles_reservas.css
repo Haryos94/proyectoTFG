@@ -1,97 +1,64 @@
-/*table {
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #333;
-    color: white;
-}
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-tr:hover {
-    background-color: #ddd;
-}
-button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #d32f2f;
-}*/
-
-:root {
-    --primary-color: #333;
-    --secondary-color: #f44336;
-    --hover-color: #ddd;
-    --even-row-color: #f2f2f2;
-    --button-hover-color: #d32f2f;
-    --background-color: #fff;
-    --text-color: #000;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0e7ff;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-header, footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: var(--primary-color);
-    color: white;
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
 table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid black;
-    padding: 12px;
+    padding: 15px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-th {
-    background-color: var(--primary-color);
-    color: white;
+thead {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: var(--even-row-color);
+    background-color: #f9f9f9;
 }
 
-tr:hover {
-    background-color: var(--hover-color);
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
 }
 
 button {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     padding: 8px 12px;
     text-align: center;
@@ -104,9 +71,25 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-hover-color);
+    background-color: #f70909;
 }
 
 footer {
     margin-top: 20px;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+    
+.menu-container {
+    grid-row: span 5 / span 5;
+}
+
+.container {
+    grid-column: span 4 / span 4;
+    grid-row: span 5 / span 5;
 }

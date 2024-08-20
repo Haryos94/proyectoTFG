@@ -6,91 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil del Cliente</title>
     <link rel="stylesheet" href="css/styles_cliente.css">
+    
 </head>
 <body>
-    
+
     <div class="top-bar">
-        
         <div class="social-icons">
-            <a href="https://www.facebook.com/boxeomanodepiedra"><img src="img/facebook.png" alt="Facebook"></a>
-            <a href="https://twitter.com/cbmanodepiedra"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="https://www.instagram.com/manodepiedracentrodeportivo/"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="https://www.facebook.com/boxeomanodepiedra" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="https://twitter.com/cbmanodepiedra" aria-label="Twitter"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com/manodepiedracentrodeportivo/" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram"></a>
         </div>
-        <a href="index.html" class="logout-button"><img src="img/cerrar-sesion.png" alt="Cerrar sesión"></a>
+        <div class="perfil">
+            <div id="cliente-info">
+                
+            </div>
+        </div>
+        <div class="logout-button">
+            <a href="index.html" aria-label="Cerrar sesión"><img src="img/cerrar-sesion.png" alt="Cerrar sesión"></a>
+        </div>
+    </div>
+
+    <div class="parent">
         
+        <div class="main-content">
+            <nav class="menu">
+                <div class="logo">
+                
+                    <img src="img/logo-mano-piedra.webp" alt="Logo">
+                </div>
+
+                <ul>
+                    <li><a href="editar_perfil.html">Editar Perfil</a></li>
+                    <li><a href="tipo_clase.html">Tipos de Clases</a></li>
+                    <li><a href="reservas.html">Tus reservas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="calendario">
+            <h2>Calendario Semanal de Clases</h2>
+            <p>Puedes reservar las clases haciendo click en ellas</p>
+            <table id="tabla-clases">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
 
     </div>
-    
-    <div class="container">
 
-        
-        
-        
-        
-        <div class="menu">
-            <div class="logo">
-               
-                <img src="img/logo-mano-piedra.webp" alt="Logo">
-            </div>
-
-            <div class="perfil">
-                <div id="cliente-info">
-                
-                </div>
-            </div>
-
-            <h2>Menú</h2>
-            <ul>
-                <li><a href="editar_perfil.html">Editar Perfil</a></li>
-                <li><a href="tipo_clase.html">Tipos de Clases</a></li>
-                <li><a href="clases.html">Calendario</a></li>
-                <li><a href="reservas.html">Tus reservas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                
-            </ul>
-        </div>
-
-       
-        
-            
-
-        <div class="historia-boxeo">
-            <h2>Historia de nuestro Club de Boxeo</h2>
-            <p>Nuestro club de boxeo fue fundado en 1983 con el objetivo de promover el deporte del boxeo en nuestra comunidad. </p>
-            <h2>Historia del Boxeo</h2>
-            <p>El boxeo es un deporte de combate que ha existido durante siglos, con raíces que se remontan a la antigua Grecia...
-                Desde sus orígenes, el boxeo ha sido un deporte popular, practicado aún antes de haber sido incluido en los Juegos Olímpicos. 
-                Entre los deportes que se practicaban en la antigua Grecia, estaba el boxeo. En Roma, los contendientes usaban los cestus, protectores metálicos para las manos, tachonado de clavos con el que llegaban hasta a matar a sus contendientes.
-
-                La lucha y el boxeo son dos de los deportes más antiguos, y hay registros que se remontan al cuarto milenio antes de Cristo, en Egipto y Oriente, aunque sus formas han ido variando según la época y la cultura en donde se originaban diferentes estilos. 
-                Los primeros datos de una pelea de boxeo en los tiempos modernos, se ubica en Inglaterra en 1681: el duque de Albermarle organizó un combate entre su mayordomo y su carnicero. 
-                Ya en el siglo xviii se lucha por dinero (en esa época sin guantes) y los espectadores hacen apuestas. 
-                Normalmente estos combates solían acabar de manera fatal.
-            </p>
-        
-            <h2>Biografías de Boxeadores</h2>
-            <div class="boxeadores">
-                <div class="boxeador">
-                    <img src="img/ali.avif" alt="Muhammad Ali">
-                    <h3>Muhammad Ali</h3>
-                    <p>Considerado uno de los mejores boxeadores de todos los tiempos, Ali fue conocido por su habilidad en el ring y su activismo social.</p>
-                </div>
-                
-                
-            </div>
-        
-            
-        
-            
-        
-            
-        </div>
-        
-        
-        
-    </div>
+    <footer>
+        <p>&copy; 2024 Mano de Piedra. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="js/script_cliente.js"></script>
+    <script src="js/script_clases.js"></script>
+
 </body>
 
 </html>

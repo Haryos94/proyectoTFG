@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(cliente => {
             const clienteInfo = document.getElementById("cliente-info");
             clienteInfo.innerHTML = `
-                <p><strong>Nombre:</strong> ${cliente.nombre}</p>
-                <p><strong>Apellidos:</strong> ${cliente.apellidos}</p>
-                <p><strong>Email:</strong> ${cliente.email}</p>
-                <p><strong>Fecha de Nacimiento:</strong> ${cliente.fecha_nacimiento}</p>
+                <div><strong>Nombre:</strong> ${cliente.nombre}</div>
+                <div><strong>Apellidos:</strong> ${cliente.apellidos}</div>
+                <div><strong>Email:</strong> ${cliente.email}</div>
+                <div><strong>Fecha de Nacimiento:</strong> ${cliente.fecha_nacimiento}</div>
                 
             `;
         })
