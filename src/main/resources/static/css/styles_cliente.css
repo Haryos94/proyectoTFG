@@ -204,6 +204,8 @@ tbody td:hover {
 }
 
 td:first-child {
+  pointer-events: none;
+  user-select: none;
   background-color: var(--first-column-bg-color);
   color: var(--header-text-color);
 }

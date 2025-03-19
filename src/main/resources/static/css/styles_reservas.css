@@ -1,40 +1,42 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #e0e7ff;
+    background-color: #f5f7fa;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    font-size: 2em;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    color: #444;
+    font-size: 2.5em;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 .container {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 1200px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     overflow: hidden;
 }
 
 th, td {
-    padding: 15px;
+    padding: 20px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 thead {
@@ -46,7 +48,6 @@ thead {
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 
 th {
     text-align: center;
@@ -60,31 +61,37 @@ button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
+    font-size: 16px;
+    margin: 5px 3px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #f70909;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f7fa;
+    border-top: 1px solid #e0e0e0;
 }
 
 .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 8px;
+    gap: 16px;
 }
-    
+
 .menu-container {
     grid-row: span 5 / span 5;
 }

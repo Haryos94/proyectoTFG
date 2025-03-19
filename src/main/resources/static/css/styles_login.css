@@ -1,6 +1,5 @@
-/* Estilos para la página de login */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #1f1e1e;
@@ -18,7 +17,7 @@ body {
 .logo img {
     display: block;
     margin: 0 auto;
-    width: 150px; /* Ajusta el ancho según tu necesidad */
+    width: 150px; 
 }
 
 .login-box {

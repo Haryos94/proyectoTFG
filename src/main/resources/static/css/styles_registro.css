@@ -1,6 +1,5 @@
-/* Estilos para la página de registro */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #222020;
@@ -18,7 +17,7 @@ body {
 .logo img {
     display: block;
     margin: 0 auto;
-    width: 100px; /* Ajusta el ancho según tu necesidad */
+    width: 100px;
 }
 
 .registro-box {
@@ -42,13 +41,13 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"] {
-    width: 80%; /* Reducido el ancho */
+    width: 80%; 
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
     display: block;
-    margin: 0 auto; /* Centrado horizontalmente */
+    margin: 0 auto; 
 }
 
 button {

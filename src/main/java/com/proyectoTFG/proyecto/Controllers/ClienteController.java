@@ -49,14 +49,14 @@ public class ClienteController {
             Long clienteId = (Long) session.getAttribute("clienteId");
     
             if (clienteId == null) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();  // Retorna 401 si no hay cliente loggeado
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); 
             }
     
             try {
                 ClientesModel clienteActualizadoResult = clientesService.editarPerfil(clienteId, clienteActualizado);
-                return ResponseEntity.ok(clienteActualizadoResult);  // Retorna 200 con el cliente actualizado
+                return ResponseEntity.ok(clienteActualizadoResult); 
             } catch (RuntimeException e) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();  // Retorna 500 en caso de error
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();  
             }
         }
 

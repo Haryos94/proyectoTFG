@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.proyectoTFG.proyecto.services.ClasesService;
 import com.proyectoTFG.proyecto.services.ReservasService;
 import com.proyectoTFG.proyecto.models.ReservasModel;
 
@@ -29,9 +27,6 @@ public class ReservaController {
 
     @Autowired
     private ReservasService reservasService;
-
-    @Autowired
-    private ClasesService clasesService;
 
     
 

@@ -1,5 +1,6 @@
 function cargarReservas() {
     fetch('http://localhost:8080/reservas/listar', {
+        method: 'GET',
         credentials: 'same-origin'
     })
     .then(response => {
@@ -15,9 +16,13 @@ function cargarReservas() {
         tbody.innerHTML = '';
 
         data.forEach(reserva => {
+
+            const fechaReserva = new Date(reserva.fechaReserva);
+            const fechaFormateada = fechaReserva.toLocaleDateString();
+
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${reserva.fechaReserva}</td>
+                <td>${fechaFormateada}</td>
                 <td>${reserva.clase.tipoClase.nombre}</td>
                 <td>${reserva.clase.hora}</td>
                 <td><button onclick="borrarReserva(${reserva.id})">Borrar</button></td>
