@@ -225,7 +225,6 @@ td:active, th:active {
 td.reservado {
   background-color: var(--button-bg-color);
   color: var(--header-text-color);
-  cursor: not-allowed;
 }
 
 footer {

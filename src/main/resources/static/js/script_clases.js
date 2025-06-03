@@ -71,11 +71,13 @@ function renderizarTablaClases(clases, reservas) {
             const clase = clases.find(c => c.dia === dia && c.hora === hora);
             const celda = crearCelda('td', clase ? clase.tipoClase.nombre : '');
             if (clase) {
+                celda.addEventListener('click', () => mostrarPopupReserva(clase));
+
                 const estaReservada = reservas.some(reserva => reserva.clase.idClases === clase.idClases);
                 
                 if (estaReservada) {
                     celda.classList.add('reservado');
-                    celda.textContent += ' (Reservada)'; 
+                    //celda.textContent += ' (Reservada)'; 
                 } else {
                     celda.addEventListener('click', () => mostrarPopupReserva(clase));//reservar(clase.idClases, celda));
                 }
@@ -149,20 +151,42 @@ async function mostrarPopupReserva(clase) {
     popup.style.display = 'flex';
 
     // Guardar la clase seleccionada para reservarla luego
-    const confirmarReservaBtn = document.getElementById('confirmarReservaBtn');
-    confirmarReservaBtn.onclick = () => reservar(clase.idClases, popup);
+    const confirmarReserva = document.getElementById('confirmarReserva');
+    confirmarReserva.onclick = () => reservar(clase.idClases, popup);
+
+    // Cancelar reserva de la clase seleccionada
+    /*const cancelarReserva = document.getElementById('cancelarReserva');
+    cancelarReserva.onclick = () => {
+        
+        if (confirmacion) {
+            borrarReserva(id);
+            cerrarPopup(popup);
+        }
+    };*/
     
-    // Cerrar el popup si el usuario hace clic en "Cancelar"
-    const cancelarReservaBtn = document.getElementById('cancelarReservaBtn');
-    cancelarReservaBtn.onclick = () => cerrarPopup(popup);
-    
-    // Cerrar el popup si el usuario hace clic en la "X"
-    const closePopupBtn = document.getElementById('closePopupBtn');
+    // Cerrar el popup si el usuario hace clic en la "Cancelar"
+    const closePopupBtn = document.getElementById('closePopup');
     closePopupBtn.onclick = () => cerrarPopup(popup);
 }
 
 function cerrarPopup(popup) {
     popup.style.display = 'none'; // Ocultar el popup
+}
+
+function borrarReserva(id) {
+    fetch(`http://localhost:8080/reservas/borrar/${id}`, {
+        method: 'DELETE',
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log(`Reserva ${id} eliminada exitosamente.`);
+            cargarReservas();
+        } else {
+            throw new Error(`Error al borrar la reserva ${id}`);
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 
