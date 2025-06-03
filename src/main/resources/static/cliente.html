@@ -1,31 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil del Cliente</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="css/styles_cliente.css">
     
 </head>
 <body>
 
     <div class="top-bar">
-        <div class="social-icons">
-            <a href="https://www.facebook.com/boxeomanodepiedra" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook"></a>
-            <a href="https://twitter.com/cbmanodepiedra" aria-label="Twitter"><img src="img/twitter.png" alt="Twitter"></a>
-            <a href="https://www.instagram.com/manodepiedracentrodeportivo/" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram"></a>
-        </div>
-        <div class="perfil">
-            <div id="cliente-info">
-                
+
+        
+            <div class="social-icons">
+                <a href="https://www.facebook.com/boxeomanodepiedra" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="https://twitter.com/cbmanodepiedra" aria-label="Twitter"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/manodepiedracentrodeportivo/" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram"></a>
             </div>
+            <div class="perfil">
+                <div id="cliente-info">
+                    
+                </div>
+            </div>
+            <div class="logout-button">
+                <a href="index.html" aria-label="Cerrar sesión"><img src="img/cerrar-sesion.png" alt="Cerrar sesión"></a>
+            </div>
+        
         </div>
-        <div class="logout-button">
-            <a href="index.html" aria-label="Cerrar sesión"><img src="img/cerrar-sesion.png" alt="Cerrar sesión"></a>
-        </div>
-    </div>
 
     <div class="parent">
         
@@ -46,8 +48,7 @@
         </div>
 
         <div class="calendario">
-            <h2>Calendario Semanal de Clases</h2>
-            <p>Puedes reservar las clases haciendo click en ellas</p>
+            <h2 style="text-align: center;">Calendario Semanal de Clases</h2>
             <table id="tabla-clases">
                 <thead>
                     
@@ -60,6 +61,17 @@
 
     </div>
 
+    <div id="popupReserva" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closePopupBtn">&times;</span>
+            <h2>Confirmar Reserva</h2>
+            <p id="claseDetalles">Detalles de la clase</p>
+            <ul id="usuariosReservadosList"></ul>
+            <button id="confirmarReservaBtn">Confirmar Reserva</button>
+            <button id="cancelarReservaBtn">Cancelar</button>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Mano de Piedra. Todos los derechos reservados.</p>
     </footer>
@@ -70,6 +82,7 @@
 </body>
 
 </html>
+
 
 
 

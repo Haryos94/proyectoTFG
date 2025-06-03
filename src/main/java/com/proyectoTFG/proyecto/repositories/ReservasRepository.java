@@ -18,5 +18,9 @@ public interface ReservasRepository extends JpaRepository<ReservasModel, Long>{
 
     List<ReservasModel> findByClase(ClasesModel clase);
 
+    List<ReservasModel> findByClase_IdClases(Long idClases);
+
+    
+
     Optional<ReservasModel> findByClaseAndCliente(ClasesModel clase, ClientesModel cliente);
 }

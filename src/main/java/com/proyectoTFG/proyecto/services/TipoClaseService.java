@@ -3,7 +3,6 @@ package com.proyectoTFG.proyecto.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyectoTFG.proyecto.models.TipoClaseModel;
@@ -15,10 +14,10 @@ public class TipoClaseService {
     
     private final TipoClaseRepository tipoClaseRepository;
 
-    @Autowired
-    public TipoClaseService(TipoClaseRepository tipoClaseRepository) {
-        this.tipoClaseRepository = tipoClaseRepository;
-    }
+        public TipoClaseService(TipoClaseRepository tipoClaseRepository) {
+            this.tipoClaseRepository = tipoClaseRepository;
+        }
+    
 
     public List<TipoClaseModel> findAll(){
         return tipoClaseRepository.findAll();

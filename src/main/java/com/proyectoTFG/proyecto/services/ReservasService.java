@@ -3,16 +3,15 @@ package com.proyectoTFG.proyecto.services;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import com.proyectoTFG.proyecto.models.ClasesModel;
 import com.proyectoTFG.proyecto.models.ClientesModel;
 import com.proyectoTFG.proyecto.models.ReservasModel;
 import com.proyectoTFG.proyecto.models.UsuariosModel;
-
 import com.proyectoTFG.proyecto.repositories.ReservasRepository;
 
 
@@ -72,23 +71,34 @@ public class ReservasService {
         
         
         reservasRepository.save(reserva);
-}
-
-// Listar reservas por usuario
-
-public List<ReservasModel> listarReservasPorUsuario(Long usuarioId) {
-    return reservasRepository.findByUsuarioId(usuarioId);
-}
-
-// Borrar reserva
-
-public void borrarReserva(Long id, Long usuarioId) {
-    
-    ReservasModel reserva = reservasRepository.findByIdAndUsuarioId(id, usuarioId);
-    if (reserva == null) {
-        throw new IllegalArgumentException("La reserva no pertenece al usuario especificado.");
     }
-    reservasRepository.deleteById(id);
-}
+
+    // Listar reservas por usuario
+
+    public List<ReservasModel> listarReservasPorUsuario(Long usuarioId) {
+        return reservasRepository.findByUsuarioId(usuarioId);
+    }
+
+    // Borrar reserva
+
+    public void borrarReserva(Long id, Long usuarioId) {
+        
+        ReservasModel reserva = reservasRepository.findByIdAndUsuarioId(id, usuarioId);
+        if (reserva == null) {
+            throw new IllegalArgumentException("La reserva no pertenece al usuario especificado.");
+        }
+        reservasRepository.deleteById(id);
+    }
+
+    // Listar reservas por clase
+    public List<UsuariosModel> obtenerUsuariosPorClase(Long claseId) {
+            // Obtener las reservas para la clase indicada
+            List<ReservasModel> reservas = reservasRepository.findByClase_IdClases(claseId);
+
+            // Extraer los usuarios de las reservas
+            return reservas.stream()
+                        .map(ReservasModel::getUsuario)
+                        .collect(Collectors.toList());
+        }
 
 }

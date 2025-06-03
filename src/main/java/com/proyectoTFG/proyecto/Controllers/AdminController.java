@@ -59,7 +59,7 @@ public class AdminController {
     
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable("id") Long id) {
+    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id) {
         adminService.deleteUserById(id);
         return ResponseEntity.ok().build();
     }

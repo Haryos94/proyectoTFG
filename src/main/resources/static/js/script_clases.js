@@ -30,6 +30,19 @@ async function cargarReservas() {
     }
 }
 
+async function cargarUsuariosReservados(claseId) {
+    try {
+        const response = await fetch(`http://localhost:8080/reservas/usuarios?claseId=${claseId}`);
+        if (!response.ok) {
+            throw new Error(`Error al cargar los usuarios reservados: ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 function renderizarTablaClases(clases, reservas) {
     const tablaClases = document.getElementById('tabla-clases');
     const thead = tablaClases.querySelector('thead');
@@ -64,7 +77,7 @@ function renderizarTablaClases(clases, reservas) {
                     celda.classList.add('reservado');
                     celda.textContent += ' (Reservada)'; 
                 } else {
-                    celda.addEventListener('click', () => reservar(clase.idClases, celda));
+                    celda.addEventListener('click', () => mostrarPopupReserva(clase));//reservar(clase.idClases, celda));
                 }
             }
             fila.appendChild(celda);
@@ -79,11 +92,7 @@ function crearCelda(tipo, contenido) {
     return celda;
 }
 
-async function reservar(idClases, celda) {
-    if (celda.classList.contains('reservado')) {
-        alert('Esta clase ya está reservada.');
-        return;
-    }
+async function reservar(idClases, popup) {
     try {
         const response = await fetch(`http://localhost:8080/reservas/crear?claseId=${idClases}`, {
             method: 'POST',
@@ -93,24 +102,70 @@ async function reservar(idClases, celda) {
             },
         });
 
-        const mensajeError = await response.text(); 
+        const mensajeError = await response.text();
 
         if (response.ok) {
-            celda.classList.add('reservado');
-            alert(`Clase reservada exitosamente.`);
+            
+            cerrarPopup(popup); // Cerrar el popup después de la reserva
         } else {
-            celda.classList.add('error');
             alert(`Error al reservar la clase: ${mensajeError}`);
         }
     } catch (error) {
-        celda.classList.add('error');
-        alert('Error al reservar la clase: ' + error);
+        alert('Error al realizar la reserva: ' + error);
     }
 }
+
 
 window.onload = async () => {
     await cargarClases();
 };
+
+
+//Funcion de mostrar popup
+async function mostrarPopupReserva(clase) {
+    // Rellenar el contenido del popup con la información de la clase
+    const claseDetalles = document.getElementById('claseDetalles');
+    claseDetalles.innerHTML = `Clase: ${clase.tipoClase.nombre}<br>Monitor: ${clase.tipoClase.profesoresModel.nombre}<br>Horario: ${clase.hora} - ${clase.dia}`;
+
+    // Cargar los usuarios que han reservado la clase
+    const usuariosReservados = await cargarUsuariosReservados(clase.idClases);
+    const usuariosList = document.getElementById('usuariosReservadosList');
+    usuariosList.innerHTML = ''; // Limpiar la lista de usuarios
+
+    if (usuariosReservados.length > 0) {
+        usuariosReservados.forEach(usuario => {
+            const li = document.createElement('li');
+            li.textContent = `${usuario.username}`;
+            usuariosList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = 'No hay usuarios reservados.';
+        usuariosList.appendChild(li);
+    }
+    
+    // Mostrar el popup
+    const popup = document.getElementById('popupReserva');
+    popup.style.display = 'flex';
+
+    // Guardar la clase seleccionada para reservarla luego
+    const confirmarReservaBtn = document.getElementById('confirmarReservaBtn');
+    confirmarReservaBtn.onclick = () => reservar(clase.idClases, popup);
+    
+    // Cerrar el popup si el usuario hace clic en "Cancelar"
+    const cancelarReservaBtn = document.getElementById('cancelarReservaBtn');
+    cancelarReservaBtn.onclick = () => cerrarPopup(popup);
+    
+    // Cerrar el popup si el usuario hace clic en la "X"
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    closePopupBtn.onclick = () => cerrarPopup(popup);
+}
+
+function cerrarPopup(popup) {
+    popup.style.display = 'none'; // Ocultar el popup
+}
+
+
 
 
 

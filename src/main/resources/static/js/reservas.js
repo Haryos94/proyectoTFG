@@ -16,7 +16,6 @@ function cargarReservas() {
         tbody.innerHTML = '';
 
         data.forEach(reserva => {
-
             const fechaReserva = new Date(reserva.fechaReserva);
             const fechaFormateada = fechaReserva.toLocaleDateString();
 
@@ -30,7 +29,7 @@ function cargarReservas() {
             tbody.appendChild(tr);
         });
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error('Error:', error));
 }
 
 function borrarReserva(id) {
@@ -46,7 +45,7 @@ function borrarReserva(id) {
             throw new Error(`Error al borrar la reserva ${id}`);
         }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error('Error:', error));
 }
 
 window.onload = cargarReservas;

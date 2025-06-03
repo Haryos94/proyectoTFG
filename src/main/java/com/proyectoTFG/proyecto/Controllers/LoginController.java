@@ -70,7 +70,10 @@ public class LoginController {
         String username = credentials.get("username");
         String password = credentials.get("password");
 
+        //Obtiene id del cliente
         Long clienteId = usuariosService.getClienteIdByUsernameAndPassword(username, password);
+
+        //Obtiene id del admin
         Long adminId = adminService.getAdminIdByUsernameAndPassword(username, password);
 
         if (clienteId != null) {

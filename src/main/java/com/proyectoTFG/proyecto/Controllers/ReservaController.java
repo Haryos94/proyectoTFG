@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.proyectoTFG.proyecto.services.ReservasService;
+
 import com.proyectoTFG.proyecto.models.ReservasModel;
+import com.proyectoTFG.proyecto.models.UsuariosModel;
+import com.proyectoTFG.proyecto.services.ReservasService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -80,6 +81,15 @@ public class ReservaController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    // Listar usuarios por clase
+    @GetMapping("/usuarios")
+    public ResponseEntity<List<UsuariosModel>> obtenerUsuariosReservados(@RequestParam Long claseId) {
+        
+        List<UsuariosModel> usuarios = reservasService.obtenerUsuariosPorClase(claseId);
+
+        return ResponseEntity.ok(usuarios);
     }
 
     
