@@ -105,8 +105,8 @@ async function reservar(idClases, popup) {
         const mensajeError = await response.text();
 
         if (response.ok) {
-            
             cerrarPopup(popup); // Cerrar el popup después de la reserva
+            await cargarClases(); // Recargar las clases para reflejar la reserva
         } else {
             alert(`Error al reservar la clase: ${mensajeError}`);
         }
